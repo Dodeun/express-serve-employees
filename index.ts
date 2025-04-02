@@ -1,24 +1,27 @@
 // Création de l'application Express
 
 import express from "express";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors({ origin: ["http://localhost:5173"] }));
 
 // Déclaration d'une route
 
 const sampleEmployee = {
 	name: {
-		first: "Charlie",
-		last: "Thompson",
+		first: "Bobby",
+		last: "Brown",
 	},
-	email: "charlie.thompson@example.com",
+	email: "bobby.brown@example.com",
 	picture: {
-		medium: "https://randomuser.me/api/portraits/med/men/40.jpg",
+		medium: "https://randomuser.me/api/portraits/med/men/41.jpg",
 	},
 };
 
 const getEmployees = (req, res) => {
-	res.json({ result: sampleEmployee });
+	res.json({ results: [sampleEmployee] });
 };
 
 app.get("/api/employees", getEmployees);
